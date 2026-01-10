@@ -1,0 +1,147 @@
+<section id="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        
+        <div class="about-grid">
+            <div class="bio">
+                <p>
+                    I'm Denisha, a creative developer with a passion for building beautiful, functional, and user-friendly digital experiences. 
+                    I specialize in bridging the gap between design and engineering, ensuring that every project not only looks great but performs flawlessly.
+                </p>
+                <p>
+                    With over 3 years of experience in full-stack development, I have worked with a diverse range of clients and technologies. 
+                    I am constantly learning and evolving, staying up-to-date with the latest trends and best practices in the industry.
+                </p>
+            </div>
+
+            <div class="details">
+                <div class="detail-group">
+                    <h3>Skills</h3>
+                    <div class="tags">
+                        <span>JavaScript (ES6+)</span>
+                        <span>React / Next.js</span>
+                        <span>Astro</span>
+                        <span>Node.js</span>
+                        <span>TypeScript</span>
+                        <span>CSS / Sass / Tailwind</span>
+                        <span>Git</span>
+                    </div>
+                </div>
+
+                <div class="detail-group">
+                    <h3>Experience</h3>
+                    <ul class="timeline">
+                        <li>
+                            <span class="date">2023 - Present</span>
+                            <strong>Senior Developer</strong> @ TechCorp
+                        </li>
+                        <li>
+                            <span class="date">2021 - 2023</span>
+                            <strong>Frontend Developer</strong> @ CreateAgency
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="detail-group">
+                    <h3>Education</h3>
+                    <ul class="timeline">
+                        <li>
+                            <strong>B.S. Computer Science</strong>
+                            <span class="school">University of Technology</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        padding: 6rem 2rem;
+        background: rgba(255, 255, 255, 0.01);
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-top: 2rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    p {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        color: white;
+    }
+
+    .detail-group {
+        margin-bottom: 2.5rem;
+    }
+
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tags span {
+        font-size: 0.85rem;
+        padding: 0.25rem 0.75rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        color: var(--text-secondary);
+    }
+
+    .timeline {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .timeline li {
+        margin-bottom: 1rem;
+        color: var(--text-secondary);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .timeline strong {
+        color: white;
+    }
+
+    .date, .school {
+        font-size: 0.9rem;
+        opacity: 0.7;
+        margin-bottom: 0.25rem;
+    }
+
+    @media (max-width: 768px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+    }
+</style>

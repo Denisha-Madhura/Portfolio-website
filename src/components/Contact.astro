@@ -1,0 +1,74 @@
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-content">
+            <p class="subtitle">Have a project in mind or just want to say hi?</p>
+            <a href="mailto:hello@example.com" class="contact-btn">Say Hello</a>
+            
+            <div class="social-links">
+                <a href="#" target="_blank">GitHub</a>
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Twitter</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        padding: 8rem 2rem;
+        text-align: center;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .subtitle {
+        font-size: 1.25rem;
+        color: var(--text-secondary);
+        margin-bottom: 3rem;
+    }
+
+    .contact-btn {
+        display: inline-block;
+        padding: 1rem 3rem;
+        background: var(--accent-gradient);
+        color: white;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        margin-bottom: 4rem;
+    }
+
+    .contact-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .social-links a {
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+    }
+
+    .social-links a:hover {
+        color: var(--accent-color);
+    }
+</style>

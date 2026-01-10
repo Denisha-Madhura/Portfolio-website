@@ -1,0 +1,40 @@
+<nav>
+    <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/projects">Work</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </div>
+</nav>
+
+<style>
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 2rem;
+        z-index: 100;
+        background: transparent;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 2rem;
+    }
+
+    a {
+        color: var(--text-color);
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+    }
+
+    a:hover {
+        opacity: 1;
+        color: var(--accent-color);
+    }
+</style>

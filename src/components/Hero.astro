@@ -1,0 +1,191 @@
+<section id="home">
+    <div class="hero-container">
+        <div class="content">
+            <h1 class="name">Denisha Madhura</h1>
+            <p class="description">
+                I build digital experiences that blend creativity with performance.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn primary">View Work</a>
+                <a href="/resume.pdf" class="btn secondary" download>Download Resume</a>
+            </div>
+        </div>
+        <div class="visual">
+            <div class="gradient-sphere"></div>
+        </div>
+    </div>
+</section>
+
+<style>
+    section {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 2rem;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        z-index: 1;
+    }
+
+    .content {
+        flex: 1;
+        max-width: 600px;
+    }
+
+    .greeting {
+        font-size: 1.25rem;
+        color: var(--accent-color);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: block;
+        opacity: 0;
+        animation: slideUp 0.8s ease forwards 0.2s;
+    }
+
+    .name {
+        font-size: 4rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        opacity: 0;
+        animation: slideUp 0.8s ease forwards 0.4s;
+    }
+
+    .role {
+        font-size: 2rem;
+        color: var(--text-secondary);
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: slideUp 0.8s ease forwards 0.6s;
+    }
+
+    .description {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        line-height: 1.6;
+        margin-bottom: 2.5rem;
+        opacity: 0;
+        animation: slideUp 0.8s ease forwards 0.8s;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        opacity: 0;
+        animation: slideUp 0.8s ease forwards 1s;
+    }
+
+    .btn {
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn.primary {
+        background: var(--accent-gradient);
+        color: white;
+        border: none;
+    }
+
+    .btn.secondary {
+        background: transparent;
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn.secondary:hover {
+        border-color: var(--accent-color);
+    }
+
+    .visual {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+    }
+
+    .gradient-sphere {
+        width: 400px;
+        height: 400px;
+        background: var(--accent-gradient);
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.5;
+        animation: pulse 4s ease-in-out infinite;
+    }
+
+    @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            opacity: 0.5;
+        }
+        50% {
+            transform: scale(1.1);
+            opacity: 0.7;
+        }
+        100% {
+            transform: scale(1);
+            opacity: 0.5;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-container {
+            flex-direction: column-reverse;
+            text-align: center;
+        }
+
+        .content {
+            margin-top: 2rem;
+        }
+
+        .name {
+            font-size: 3rem;
+        }
+
+        .role {
+            font-size: 1.5rem;
+        }
+
+        .cta-buttons {
+            justify-content: center;
+        }
+
+        .gradient-sphere {
+            width: 250px;
+            height: 250px;
+        }
+    }
+</style>
