@@ -1,11 +1,20 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Navbar from '../components/Navbar.astro';
+import Hero from '../components/Hero.astro';
+import BentoGrid from '../components/BentoGrid.astro';
 ---
 
 <Layout>
-	<Welcome />
+	<Navbar />
+	<main class="relative z-10 pb-20">
+		<Hero />
+		<BentoGrid />
+	</main>
+	
+	{/* Background ambient light */}
+	<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
+		<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/20 rounded-full blur-[120px]"></div>
+		<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-900/20 rounded-full blur-[120px]"></div>
+	</div>
 </Layout>

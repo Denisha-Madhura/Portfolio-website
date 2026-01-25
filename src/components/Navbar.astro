@@ -1,0 +1,98 @@
+---
+const navItems = [
+  { name: "Home", href: "/" },
+  { name: "About", href: "/about" },
+  { name: "Projects", href: "/projects" },
+  { name: "Experience", href: "/experience" },
+  { name: "Blog", href: "https://substack.com/@maddy210", external: true },
+];
+
+import { Image } from "astro:assets";
+// Placeholder for DM logo or just text
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300"
+>
+  <div
+    id="nav-bg"
+    class="absolute inset-0 bg-transparent backdrop-blur-none border-b border-transparent transition-all duration-500"
+  >
+  </div>
+
+  {/* DM Logo / Hero Element */}
+  <a
+    href="/"
+    class="relative z-10 group"
+    onclick="event.preventDefault(); window.dispatchEvent(new CustomEvent('trigger-genie'));"
+  >
+    <div
+      class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center transition-all duration-700 ease-in-out group-hover:bg-black/80 group-hover:border-purple-500/20 group-hover:rotate-[360deg] overflow-hidden"
+    >
+      <span
+        class="font-bold text-lg text-white/50 group-hover:text-purple-500 transition-colors duration-300 relative z-20"
+        >DM</span
+      >
+    </div>
+
+    {/* Click Tooltip */}
+    <div
+      class="absolute -bottom-8 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-all duration-300 pointer-events-none whitespace-nowrap"
+    >
+      <span class="text-[10px] uppercase tracking-widest text-white/60"
+        >Click Here</span
+      >
+    </div>
+  </a>
+
+  {/* Navigation Links */}
+  <div class="relative z-10 flex gap-8">
+    {
+      navItems.map((item) => (
+        <a
+          href={item.href}
+          target={item.external ? "_blank" : "_self"}
+          rel={item.external ? "noopener noreferrer" : ""}
+          class="relative text-sm font-medium text-white/50 hover:text-white transition-colors duration-300 group"
+        >
+          {item.name}
+          {/* Underglow Effect */}
+          <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)] rounded-full transition-all duration-300 group-hover:w-full opacity-0 group-hover:opacity-100" />
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<script>
+  const navBg = document.getElementById("nav-bg");
+
+  window.addEventListener("scroll", () => {
+    if (navBg) {
+      if (window.scrollY > 50) {
+        navBg.classList.remove(
+          "bg-transparent",
+          "backdrop-blur-none",
+          "border-transparent",
+        );
+        navBg.classList.add(
+          "bg-black/20",
+          "backdrop-blur-md",
+          "border-white/5",
+        );
+      } else {
+        navBg.classList.add(
+          "bg-transparent",
+          "backdrop-blur-none",
+          "border-transparent",
+        );
+        navBg.classList.remove(
+          "bg-black/20",
+          "backdrop-blur-md",
+          "border-white/5",
+        );
+      }
+    }
+  });
+</script>

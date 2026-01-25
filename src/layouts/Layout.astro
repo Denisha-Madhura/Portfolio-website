@@ -1,3 +1,10 @@
+---
+import { ClientRouter } from "astro:transitions";
+import "@fontsource/inter";
+import "../styles/global.css";
+import GenieEffect from "../components/GenieEffect";
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
@@ -6,18 +13,13 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>Denisha Madhura</title>
+		<ClientRouter />
 	</head>
-	<body>
-		<slot />
+	<body class="bg-black text-white antialiased overflow-x-hidden">
+		<GenieEffect client:only="react" />
+		<div id="app-container" class="relative min-h-screen">
+			<slot />
+		</div>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

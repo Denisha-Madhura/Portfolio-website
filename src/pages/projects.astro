@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+
+const projects = [
+  {
+    title: "Gosh",
+    description:
+      "A lightweight Unix-like shell built in Go, optimized for speed and efficient process management.",
+    tags: ["Go", "Systems", "Unix Shell"],
+    link: "https://github.com/denisha-madhura/Gosh",
+  },
+  {
+    title: "Gofeed",
+    description:
+      "A production-ready RSS aggregator service built in Go, featuring API key authentication, concurrent background workers, and complex many-to-many data relationships.",
+    tags: ["Go", "API", "Concurrency"],
+    link: "https://github.com/denisha-madhura/Gofeed",
+  },
+  {
+    title: "Portfolio",
+    description:
+      "A fast, aesthetic personal portfolio and project showcase built with Astro.",
+    tags: ["Astro", "Tailwind", "React"],
+    link: "https://github.com/denisha-madhura/Portfolio-website",
+  },
+  {
+    title: "Gauge The Echo",
+    description: "A movie finder and info made in React.",
+    tags: ["React", "Rest API", "Frontend"],
+    link: "https://github.com/denisha-madhura/gauge-the-echo",
+  },
+  {
+    title: "Self Driving Car",
+    description:
+      "Self driving car with the game made in javascript and neural networks to predict the best way to drive the car in the game.",
+    tags: ["JavaScript", "Neural Networks", "Game Dev"],
+    link: "https://github.com/denisha-madhura/Self-Driving-Car",
+  },
+  {
+    title: "Journalling Chatbot",
+    description:
+      "A chatbot that you can share your journals with and it makes a summary and analyzes it for you.",
+    tags: ["AI", "NLP", "Python"],
+    link: "https://github.com/denisha-madhura/Journaling-Chatbot",
+  },
+];
+---
+
+<Layout>
+  <Navbar />
+  <main class="pt-32 px-6 max-w-7xl mx-auto">
+    <h1 class="text-4xl font-bold mb-10 pl-2">Selected Works</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        projects.map((project) => (
+          <a
+            href={project.link}
+            target="_blank"
+            class="group rounded-3xl p-8 liquid-glass hover:frosty-glass transition-all duration-500 hover:scale-[1.02] cursor-pointer block"
+          >
+            <div class="flex justify-between items-start mb-6">
+              <h3 class="text-2xl font-bold text-white group-hover:text-glow transition-all">
+                {project.title}
+              </h3>
+              <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                ↗
+              </div>
+            </div>
+            <p class="text-white/60 mb-6">{project.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
+                <span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-white/5 text-white/70">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </main>
+</Layout>

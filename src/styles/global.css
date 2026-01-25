@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+
+  --color-glass-100: rgba(255, 255, 255, 0.1);
+  --color-glass-200: rgba(255, 255, 255, 0.2);
+  --color-glass-300: rgba(255, 255, 255, 0.3);
+
+  --color-accent-dark: #000000;
+  --color-accent-light: #ffffff;
+}
+
+@layer utilities {
+  .liquid-glass {
+    position: relative;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: none;
+    border-radius: 1.5rem;
+    transition: all 0.5s ease;
+  }
+
+  .liquid-glass::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: inherit;
+    pointer-events: none;
+    box-shadow: inset -10px -8px 0px -11px rgba(255, 255, 255, 0.1),
+      inset 0px -9px 0px -8px rgba(255, 255, 255, 0.1);
+    z-index: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+
+  /* Ensure content sits above the pseudo-element shine */
+  .liquid-glass>* {
+    position: relative;
+    z-index: 1;
+  }
+
+  .frosty-glass {
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(10px) saturate(100%);
+    -webkit-backdrop-filter: blur(10px) saturate(100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5),
+      inset 0 4px 20px rgba(255, 255, 255, 0.05);
+  }
+
+  .frosty-glass::after {
+    opacity: 1;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  color: #fff;
+  font-family: var(--font-sans);
+}
+
+body {
+  background: #000000;
+  min-height: 100vh;
+  background-attachment: fixed;
+}
