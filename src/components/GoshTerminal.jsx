@@ -12,10 +12,10 @@ const GoshTerminal = () => {
 
     const commands = {
         help: "Available commands: help, clear, version, whoami, ls, install",
-        version: "Gosh v0.1.0 (linux/amd64)",
+        version: "Gosh v1.0.0 (linux/amd64)",
         whoami: "guest",
         ls: "README.md  gosh  LICENSE  go.mod  go.sum",
-        install: "To install: curl -sSf https://gosh.sh/install | sh",
+        install: "To install: curl -fsSL https://denishamadhura.vercel.app/install.sh | bash",
         gosh: "You are already using gosh!",
     };
 

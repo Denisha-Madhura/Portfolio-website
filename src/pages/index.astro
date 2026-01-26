@@ -1,8 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro';
-import Hero from '../components/Hero.astro';
-import BentoGrid from '../components/BentoGrid.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Hero from "../components/Hero.astro";
+import BentoGrid from "../components/BentoGrid.astro";
 ---
 
 <Layout>
@@ -11,10 +11,4 @@ import BentoGrid from '../components/BentoGrid.astro';
 		<Hero />
 		<BentoGrid />
 	</main>
-	
-	{/* Background ambient light */}
-	<div class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 overflow-hidden">
-		<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-purple-900/20 rounded-full blur-[120px]"></div>
-		<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-900/20 rounded-full blur-[120px]"></div>
-	</div>
 </Layout>

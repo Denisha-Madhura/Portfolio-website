@@ -61,12 +61,7 @@ export default function CopyCommand() {
                     </svg>
                 </div>
 
-                {/* Animated "Copied!" text */}
-                <span
-                    className={`text-[#a6e3a1] text-sm font-medium absolute right-12 transition-all duration-300 ${copied ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4 pointer-events-none'}`}
-                >
-                    Copied!
-                </span>
+
             </div>
         </div>
     );
