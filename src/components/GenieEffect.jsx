@@ -23,6 +23,24 @@ export default function GenieEffect() {
     }, []);
 
     useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (!showOverlay) return;
+
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (textIndex < steps.length - 1) {
+                    setTextIndex(prev => prev + 1);
+                } else {
+                    handleReset();
+                }
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+        return () => window.removeEventListener('keydown', handleKeyDown);
+    }, [showOverlay, textIndex]);
+
+    useEffect(() => {
         const appContainer = document.getElementById('app-container');
         if (appContainer) {
             if (isSucked) {
@@ -76,14 +94,15 @@ export default function GenieEffect() {
                             {steps[textIndex]}
                         </p>
 
-                        {/* Step 1: Animated Arrow */}
-                        {textIndex === 0 && (
+                        {textIndex < 2 && (
                             <motion.div
                                 animate={{ y: [0, 10, 0] }}
                                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                                className="self-end"
                             >
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-white/50">
-                                    <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+                                    <polyline points="9 10 4 15 9 20" />
+                                    <path d="M20 4v7a4 4 0 0 1-4 4H4" />
                                 </svg>
                             </motion.div>
                         )}
