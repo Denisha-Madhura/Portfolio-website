@@ -1,10 +1,17 @@
 ---
-const navItems = [
+type NavItem = {
+  name: string;
+  href: string;
+  external?: boolean;
+  isButton?: boolean;
+};
+
+const navItems: NavItem[] = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Projects", href: "/projects" },
   { name: "Experience", href: "/experience" },
-  { name: "Blog", href: "https://substack.com/@maddy210", external: true },
+  { name: "Resume", href: "/resume" },
 ];
 
 import { Image } from "astro:assets";
@@ -66,9 +73,10 @@ import { Image } from "astro:assets";
 </nav>
 
 <script>
-  const navBg = document.getElementById("nav-bg");
+  function initNavbar() {
+    const navBg = document.getElementById("nav-bg");
 
-  window.addEventListener("scroll", () => {
+    // Initial check
     if (navBg) {
       if (window.scrollY > 50) {
         navBg.classList.remove(
@@ -94,5 +102,50 @@ import { Image } from "astro:assets";
         );
       }
     }
-  });
+
+    const onScroll = () => {
+      if (navBg) {
+        if (window.scrollY > 50) {
+          navBg.classList.remove(
+            "bg-transparent",
+            "backdrop-blur-none",
+            "border-transparent",
+          );
+          navBg.classList.add(
+            "bg-black/20",
+            "backdrop-blur-md",
+            "border-white/5",
+          );
+        } else {
+          navBg.classList.add(
+            "bg-transparent",
+            "backdrop-blur-none",
+            "border-transparent",
+          );
+          navBg.classList.remove(
+            "bg-black/20",
+            "backdrop-blur-md",
+            "border-white/5",
+          );
+        }
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    // Clean up listener when navigating away to prevent memory leaks or duplicates if re-running
+    document.addEventListener(
+      "astro:before-preparation",
+      () => {
+        window.removeEventListener("scroll", onScroll);
+      },
+      { once: true },
+    );
+  }
+
+  // Run on initial load
+  initNavbar();
+
+  // Run on view transitions navigation
+  document.addEventListener("astro:page-load", initNavbar);
 </script>
