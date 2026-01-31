@@ -35,12 +35,9 @@ import { Image } from "astro:assets";
     onclick="event.preventDefault(); window.dispatchEvent(new CustomEvent('trigger-genie'));"
   >
     <div
-      class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center transition-all duration-700 ease-in-out group-hover:bg-black/80 group-hover:border-purple-500/20 group-hover:rotate-[360deg] overflow-hidden"
+      class="w-12 h-12 rounded-full border border-white/10 bg-white/5 flex items-center justify-center overflow-hidden"
     >
-      <span
-        class="font-bold text-lg text-white/50 group-hover:text-purple-500 transition-colors duration-300 relative z-20"
-        >DM</span
-      >
+      <span class="font-bold text-lg text-white/50 relative z-20">DM</span>
     </div>
 
     {/* Click Tooltip */}

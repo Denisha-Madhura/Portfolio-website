@@ -79,3 +79,7 @@ body {
   min-height: 100vh;
   background-attachment: fixed;
 }
+
+::-webkit-scrollbar {
+  display: none;
+}
