@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.astro";
+import GitHubCalendar from "../components/GitHubCalendar.jsx";
 
 const projects = [
   {
@@ -10,46 +11,40 @@ const projects = [
     tags: ["Go", "Systems", "Unix Shell", "Docker", "GitHub Releases"],
     link: "/gosh",
   },
-  {
-    title: "Gofeed",
-    description:
-      "A production-ready RSS aggregator service built in Go, featuring API key authentication, concurrent background workers, and complex many-to-many data relationships.",
-    tags: ["Go", "API", "Concurrency"],
-    link: "https://github.com/denisha-madhura/Gofeed",
-  },
+
   {
     title: "Portfolio",
     description:
       "A fast, aesthetic personal portfolio and project showcase built with Astro.",
     tags: ["Astro", "Tailwind", "React"],
-    link: "https://github.com/denisha-madhura/Portfolio-website",
+    link: "https://github.com/madden-go/Portfolio-website",
   },
   {
     title: "Gauge The Echo",
     description: "A movie finder and info made in React.",
     tags: ["React", "Rest API", "Frontend"],
-    link: "https://github.com/denisha-madhura/gauge-the-echo",
+    link: "https://github.com/madden-go/gauge-the-echo",
   },
   {
     title: "Self Driving Car",
     description:
       "Self driving car with the game made in javascript and neural networks to predict the best way to drive the car in the game.",
     tags: ["JavaScript", "Neural Networks", "Game Dev"],
-    link: "https://github.com/denisha-madhura/Self-Driving-Car",
+    link: "https://github.com/madden-go/Self-Driving-Car",
   },
   {
     title: "Journalling Chatbot",
     description:
       "A chatbot that you can share your journals with and it makes a summary and analyzes it for you.",
     tags: ["AI", "NLP", "Python"],
-    link: "https://github.com/denisha-madhura/Journaling-Chatbot",
+    link: "https://github.com/madden-go/Journaling-Chatbot",
   },
 ];
 ---
 
 <Layout>
   <Navbar />
-  <main class="pt-32 px-6 max-w-7xl mx-auto">
+  <main class="pt-32 px-6 max-w-7xl mx-auto pb-20">
     <h1 class="text-4xl font-bold mb-10 pl-2">All projects</h1>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {
@@ -57,7 +52,7 @@ const projects = [
           <a
             href={project.link}
             target="_blank"
-            class="group rounded-3xl p-8 liquid-glass hover:frosty-glass transition-all duration-500 hover:scale-[1.02] cursor-pointer block"
+            class="group rounded-3xl p-8 liquid-glass hover:frosty-glass transition-all duration-500 cursor-pointer block"
           >
             <div class="flex justify-between items-start mb-6">
               <h3 class="text-2xl font-bold text-white group-hover:text-glow transition-all">
@@ -78,6 +73,13 @@ const projects = [
           </a>
         ))
       }
+    </div>
+
+    <div class="mt-20 w-full overflow-hidden">
+      <h2 class="text-2xl font-bold mb-6 pl-2">GitHub Contributions</h2>
+      <div class="w-full flex items-center justify-center">
+        <GitHubCalendar client:only="react" />
+      </div>
     </div>
   </main>
 </Layout>

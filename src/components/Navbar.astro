@@ -50,8 +50,8 @@ import { Image } from "astro:assets";
     </div>
   </a>
 
-  {/* Navigation Links */}
-  <div class="relative z-10 flex gap-8">
+  {/* Desktop Navigation Links */}
+  <div class="relative z-10 hidden md:flex gap-8">
     {
       navItems.map((item) => (
         <a
@@ -67,11 +67,124 @@ import { Image } from "astro:assets";
       ))
     }
   </div>
+
+  {/* Mobile Menu Toggle */}
+  <button
+    id="mobile-toggle"
+    class="relative z-50 md:hidden w-10 h-10 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white transition-all duration-300 hover:bg-white/10"
+    aria-label="Toggle Menu"
+  >
+    <div class="relative w-5 h-4 flex flex-col justify-between overflow-hidden">
+      <span
+        id="line-1"
+        class="w-full h-0.5 bg-current transform transition-all duration-300 origin-left"
+      ></span>
+      <span
+        id="line-2"
+        class="w-full h-0.5 bg-current transform transition-all duration-300"
+      ></span>
+      <span
+        id="line-3"
+        class="w-full h-0.5 bg-current transform transition-all duration-300 origin-left"
+      ></span>
+    </div>
+  </button>
+
+  {/* Mobile Menu Overlay */}
+  <div
+    id="mobile-menu"
+    class="fixed inset-0 z-40 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center opacity-0 pointer-events-none transition-all duration-500"
+  >
+    <div class="flex flex-col gap-8 text-center">
+      {
+        navItems.map((item, index) => (
+          <a
+            href={item.href}
+            target={item.external ? "_blank" : "_self"}
+            rel={item.external ? "noopener noreferrer" : ""}
+            class="mobile-link text-2xl font-light text-white/50 hover:text-white transition-all duration-500 translate-y-8 opacity-0"
+            style={`transition-delay: ${index * 50}ms`}
+          >
+            {item.name}
+          </a>
+        ))
+      }
+    </div>
+  </div>
 </nav>
 
 <script>
   function initNavbar() {
     const navBg = document.getElementById("nav-bg");
+    const mobileToggle = document.getElementById("mobile-toggle");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const line1 = document.getElementById("line-1");
+    const line2 = document.getElementById("line-2");
+    const line3 = document.getElementById("line-3");
+    const mobileLinks = document.querySelectorAll(".mobile-link");
+    let isMenuOpen = false;
+
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
+
+      if (isMenuOpen) {
+        // Open Menu
+        mobileMenu.classList.remove("opacity-0", "pointer-events-none");
+        mobileMenu.classList.add("opacity-100", "pointer-events-auto");
+
+        // Animate Hamburger to X
+        line1.classList.add("rotate-45", "translate-x-px", "-translate-y-px");
+        line2.classList.add("opacity-0", "translate-x-full");
+        line3.classList.add("-rotate-45", "translate-x-px", "translate-y-px");
+
+        // Stagger in links
+        mobileLinks.forEach((link) => {
+          link.classList.remove("translate-y-8", "opacity-0");
+        });
+
+        // Lock scroll
+        document.body.style.overflow = "hidden";
+      } else {
+        // Close Menu
+        mobileMenu.classList.add("opacity-0", "pointer-events-none");
+        mobileMenu.classList.remove("opacity-100", "pointer-events-auto");
+
+        // Animate X to Hamburger
+        line1.classList.remove(
+          "rotate-45",
+          "translate-x-px",
+          "-translate-y-px",
+        );
+        line2.classList.remove("opacity-0", "translate-x-full");
+        line3.classList.remove(
+          "-rotate-45",
+          "translate-x-px",
+          "translate-y-px",
+        );
+
+        // Reset links
+        mobileLinks.forEach((link) => {
+          link.classList.add("translate-y-8", "opacity-0");
+        });
+
+        // Unlock scroll
+        document.body.style.overflow = "";
+      }
+    }
+
+    if (mobileToggle) {
+      // Clone and replace to prevent duplicate listeners on View Transitions
+      const newToggle = mobileToggle.cloneNode(true);
+      mobileToggle.parentNode.replaceChild(newToggle, mobileToggle);
+      newToggle.addEventListener("click", toggleMenu);
+    }
+
+    // Close menu when clicking a link
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (isMenuOpen) toggleMenu();
+      });
+    });
 
     // Initial check
     if (navBg) {
