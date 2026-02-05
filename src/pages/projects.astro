@@ -10,20 +10,14 @@ const projects = [
       "A lightweight Unix-like shell built in Go, optimized for speed and efficient process management.",
     tags: ["Go", "Systems", "Unix Shell", "Docker", "GitHub Releases"],
     link: "/gosh",
-  },
-
-  {
-    title: "Portfolio",
-    description:
-      "A fast, aesthetic personal portfolio and project showcase built with Astro.",
-    tags: ["Astro", "Tailwind", "React"],
-    link: "https://github.com/madden-go/Portfolio-website",
+    video: "/gosh.webm",
   },
   {
     title: "Gauge The Echo",
     description: "A movie finder and info made in React.",
     tags: ["React", "Rest API", "Frontend"],
     link: "https://github.com/madden-go/gauge-the-echo",
+    video: "/gaugetheecho.mp4",
   },
   {
     title: "Self Driving Car",
@@ -31,6 +25,7 @@ const projects = [
       "Self driving car with the game made in javascript and neural networks to predict the best way to drive the car in the game.",
     tags: ["JavaScript", "Neural Networks", "Game Dev"],
     link: "https://github.com/madden-go/Self-Driving-Car",
+    video: "/selfdrivingcar.webm",
   },
   {
     title: "Journalling Chatbot",
@@ -38,6 +33,7 @@ const projects = [
       "A chatbot that you can share your journals with and it makes a summary and analyzes it for you.",
     tags: ["AI", "NLP", "Python"],
     link: "https://github.com/madden-go/Journaling-Chatbot",
+    image: "/journalingchatbot.png",
   },
 ];
 ---
@@ -46,26 +42,60 @@ const projects = [
   <Navbar />
   <main class="pt-32 px-6 max-w-7xl mx-auto pb-20">
     <h1 class="text-4xl font-bold mb-10 pl-2">All projects</h1>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       {
         projects.map((project) => (
           <a
             href={project.link}
             target="_blank"
-            class="group rounded-3xl p-8 liquid-glass hover:frosty-glass transition-all duration-500 cursor-pointer block"
+            class="group rounded-3xl p-8 liquid-glass hover:frosty-glass transition-all duration-500 cursor-pointer block flex flex-col h-full"
           >
-            <div class="flex justify-between items-start mb-6">
-              <h3 class="text-2xl font-bold text-white group-hover:text-glow transition-all">
-                {project.title}
-              </h3>
-              <div class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
-                ↗
+            <div class="mb-6">
+              <div class="flex justify-between items-start mb-4">
+                <h3 class="text-3xl font-bold text-white group-hover:text-glow transition-all drop-shadow-md">
+                  {project.title}
+                </h3>
+                <div class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all">
+                  ↗
+                </div>
               </div>
+              <p class="text-white/60 text-lg leading-relaxed">
+                {project.description}
+              </p>
             </div>
-            <p class="text-white/60 mb-6">{project.description}</p>
-            <div class="flex flex-wrap gap-2">
+
+            {project.video ? (
+              <div class="mb-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative group-hover:shadow-white/10 transition-all">
+                <video
+                  autoplay
+                  loop
+                  muted
+                  playsinline
+                  class="w-full object-cover"
+                >
+                  <source
+                    src={project.video}
+                    type={
+                      project.video.endsWith(".webm")
+                        ? "video/webm"
+                        : "video/mp4"
+                    }
+                  />
+                </video>
+              </div>
+            ) : project.image ? (
+              <div class="mb-6 rounded-2xl overflow-hidden border border-white/10 shadow-2xl relative group-hover:shadow-white/10 transition-all">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="w-full object-cover"
+                />
+              </div>
+            ) : null}
+
+            <div class="flex flex-wrap gap-2 mt-auto">
               {project.tags.map((tag) => (
-                <span class="px-3 py-1 rounded-full text-xs border border-white/10 bg-white/5 text-white/70 hover:bg-purple-500/20 hover:border-purple-500/50 hover:text-white transition-all duration-300">
+                <span class="px-3 py-1 rounded-md text-xs border border-white/10 bg-white/5 text-white/70 group-hover:bg-purple-500/20 group-hover:border-purple-500/50 group-hover:text-white transition-all duration-300">
                   {tag}
                 </span>
               ))}
